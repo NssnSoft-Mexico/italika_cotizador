@@ -10,6 +10,10 @@ Este proyecto es una API Rest construida con **Spring Boot** que permite generar
   
 ## Instalación y Configuración
 
+ - Dentro de los archivos se encuentra el archivo de la base de datos con las 3 tablas utilizadas
+ - También se encuentra un Front-End el cual fue realizado con Angular
+ - Dentro de los archivos se encuentra el Diagrama Entidad Relación de la base de datos
+
 ### 1. Clonar el Repositorio
 
 ```bash

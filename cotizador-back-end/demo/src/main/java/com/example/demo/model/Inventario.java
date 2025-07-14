@@ -1,8 +1,20 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper=false)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "ordenes_users")
 public class Inventario {
     
     @Id

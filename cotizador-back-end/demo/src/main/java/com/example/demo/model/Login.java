@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import java.sql.Date;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +11,26 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+
+    @JsonProperty("username")
     private String username;
+
+    @JsonProperty("password")
     private String password;
+    
+    @JsonProperty("direccion")
     private String direccion;
+
+    @JsonProperty("nombre_user")
     private String nombre_user;
+
+    @JsonProperty("fecha_creacion")
     private Date fecha_creacion;
+
+    @JsonProperty("tipo")
     private Long tipo;
+
+    @JsonProperty("correo")
     private String correo;
 
    public String getUsername() { 

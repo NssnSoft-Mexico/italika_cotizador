@@ -15,7 +15,7 @@ import com.example.demo.service.OrdenesService;
 
 @RestController
 @RequestMapping("/api/ordenes")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class OrdenesController {
     @Autowired
     private OrdenesService ordenesService;

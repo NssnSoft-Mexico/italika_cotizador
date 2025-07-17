@@ -30,4 +30,14 @@ public class AgendaService {
     public void deleteCita(Long id) {
         agendaRepository.deleteById(id);
     }
+
+    public void actualizarCita(Agenda agenda) {
+        agendaRepository.findById(agenda.getId())
+            .ifPresent(cita -> {
+                cita.setEstatus(agenda.getEstatus());
+                cita.setId_cliente(agenda.getId_cliente());
+                agendaRepository.save(cita);
+            }
+        );
+    }
 }

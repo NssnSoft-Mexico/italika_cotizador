@@ -6,4 +6,6 @@ import com.example.demo.model.Agenda;
 
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
+    Agenda findByEstatus(Boolean estatus);
+
 }

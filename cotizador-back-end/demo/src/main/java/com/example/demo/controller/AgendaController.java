@@ -28,6 +28,11 @@ public class AgendaController {
         return agendaService.obtenerAgenda();
     }
 
+    @GetMapping("/obtenerAgendaByStatus/{estatus}")
+    public Agenda obtenerAgendaByStatus(@PathVariable Boolean estatus) {
+        return agendaService.obtenerAgendaByStatus(estatus);
+    }
+
     @GetMapping("/obtenerAgendaById/{id}")
     public Agenda obtenerAgendaById(@PathVariable Long id) {
         return agendaService.obtenerAgendaById(id);

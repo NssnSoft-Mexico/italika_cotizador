@@ -41,7 +41,7 @@ public class AgendaService {
         );
     }
 
-    public Agenda obtenerAgendaByStatus(Boolean estatus) {
+    public List<Agenda> obtenerAgendaByStatus(Boolean estatus) {
         return agendaRepository.findByEstatus(estatus);
     }
 }

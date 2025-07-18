@@ -29,7 +29,7 @@ public class AgendaController {
     }
 
     @GetMapping("/obtenerAgendaByStatus/{estatus}")
-    public Agenda obtenerAgendaByStatus(@PathVariable Boolean estatus) {
+    public List<Agenda> obtenerAgendaByStatus(@PathVariable Boolean estatus) {
         return agendaService.obtenerAgendaByStatus(estatus);
     }
 

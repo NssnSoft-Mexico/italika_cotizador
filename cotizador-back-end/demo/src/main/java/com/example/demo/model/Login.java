@@ -33,7 +33,11 @@ public class Login {
     @JsonProperty("correo")
     private String correo;
 
-   public String getUsername() { 
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsername() { 
         return username;
     }
 

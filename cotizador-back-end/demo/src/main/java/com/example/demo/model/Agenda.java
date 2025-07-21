@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +16,7 @@ public class Agenda {
     private Long id;
 
     @JsonProperty("fecha")
-    private Date fecha;
+    private LocalDate fecha;
 
     @JsonProperty("hora")
     private String hora;
@@ -34,11 +35,11 @@ public class Agenda {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

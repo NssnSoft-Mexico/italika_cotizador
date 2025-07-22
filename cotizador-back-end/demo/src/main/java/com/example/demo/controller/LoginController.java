@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,10 @@ public class LoginController {
             if (user.getPassword().equals(loginRequest.getPassword())) {
                 Map<String, Object> response = new HashMap<>();
                 response.put("id", user.getId());
-                response.put("direccion", user.getUsername());
+                response.put("direccion", user.getDireccion());
                 response.put("nombre_user", user.getNombre_user());
                 
-                return ResponseEntity.ok(response); // 200 OK
+                return ResponseEntity.ok(response);
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta"); // 401
             }
@@ -44,5 +45,10 @@ public class LoginController {
     @PostMapping("/crearUsuario")
     public Login crearUser(@RequestBody Login login) {
         return loginService.saveUser(login);
+    }
+
+    @GetMapping("/obtenerUsuarios")
+    public List<Login> obtenerUsuarios() {
+        return loginService.obtenerUsuarios();
     }
 }

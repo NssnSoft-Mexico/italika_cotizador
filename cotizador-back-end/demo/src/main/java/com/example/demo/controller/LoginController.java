@@ -33,6 +33,7 @@ public class LoginController {
                 response.put("id", user.getId());
                 response.put("direccion", user.getDireccion());
                 response.put("nombre_user", user.getNombre_user());
+                response.put("tipo", user.getTipo());
                 
                 return ResponseEntity.ok(response);
             } else {

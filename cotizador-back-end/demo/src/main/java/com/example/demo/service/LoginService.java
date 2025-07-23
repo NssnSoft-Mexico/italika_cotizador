@@ -20,4 +20,12 @@ public class LoginService {
     public List<Login> obtenerUsuarios() {
         return loginRepository.findAll();
     }
+
+    public boolean eliminarUsuario(Long id) {
+        if (loginRepository.existsById(id)) {
+            loginRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

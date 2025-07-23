@@ -52,4 +52,20 @@ public class LoginController {
     public List<Login> obtenerUsuarios() {
         return loginService.obtenerUsuarios();
     }
+
+    @DeleteMapping("/eliminarUsuario/{id}")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
+        if (loginService.eliminarUsuario(id)) {
+            return ResponseEntity.ok("Usuario eliminado correctamente");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+        }
+    }
+
+    @GetMapping("/obtenerDetailCita/{id}")
+    public ResponseEntity<Login> obtenerDetailCita(@PathVariable Long id) {
+        return loginRepository.findById(id)
+            .map(user -> ResponseEntity.ok(user))
+            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
 }

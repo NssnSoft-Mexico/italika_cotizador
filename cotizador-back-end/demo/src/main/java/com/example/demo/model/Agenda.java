@@ -1,10 +1,7 @@
 package com.example.demo.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
 
 @Entity

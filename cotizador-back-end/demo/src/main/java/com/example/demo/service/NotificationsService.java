@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.Notifications;
 import com.example.demo.repository.NotificationsRepository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,11 @@ public class NotificationsService {
         return notificationsRepository.existsByTokenId(tokenId);
     }
 
-    public Notifications getTokenId() {
-        return notificationsRepository.findAll().stream().findFirst().orElse(null);
+    public List<Notifications> obtenerId() {
+        return notificationsRepository.findAll();
+    }
+
+    public void deleteTokenId(Long id) {
+        notificationsRepository.deleteById(id);
     }
 }

@@ -23,4 +23,8 @@ public class NotificationsService {
     public boolean existsByTokenId(String tokenId) {
         return notificationsRepository.existsByTokenId(tokenId);
     }
+
+    public Notifications getTokenId() {
+        return notificationsRepository.findAll().stream().findFirst().orElse(null);
+    }
 }

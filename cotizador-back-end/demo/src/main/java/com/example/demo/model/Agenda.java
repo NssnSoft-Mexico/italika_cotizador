@@ -18,8 +18,8 @@ public class Agenda {
     @JsonProperty("hora")
     private String hora;
 
-    @JsonProperty("id_cliente")
-    private Long id_cliente;
+    @JsonProperty("idCliente")
+    private Long idCliente;
 
     @JsonProperty("estatus")
     private boolean estatus;
@@ -48,12 +48,12 @@ public class Agenda {
         this.hora = hora;
     }
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Long getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Boolean getEstatus() {

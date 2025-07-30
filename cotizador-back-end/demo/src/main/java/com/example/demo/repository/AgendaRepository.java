@@ -9,5 +9,6 @@ import com.example.demo.model.Agenda;
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
     List<Agenda> findByEstatus(Boolean estatus);
+    List<Agenda> findByIdCliente(Long idCliente);
 
 }

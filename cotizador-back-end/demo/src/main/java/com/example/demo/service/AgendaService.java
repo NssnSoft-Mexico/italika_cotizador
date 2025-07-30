@@ -1,11 +1,8 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.model.Agenda;
 import com.example.demo.repository.AgendaRepository;
 
@@ -18,9 +15,8 @@ public class AgendaService {
         return agendaRepository.findAll();
     }
 
-    public Agenda obtenerAgendaById(Long id) {
-        Optional<Agenda> agenda = agendaRepository.findById(id);
-        return agenda.orElse(null);
+    public List<Agenda> obtenerAgendaById(Long idCliente) {
+        return agendaRepository.findByIdCliente(idCliente);
     }
 
     public Agenda saveAgenda(Agenda agenda) {
@@ -35,7 +31,7 @@ public class AgendaService {
         agendaRepository.findById(agenda.getId())
             .ifPresent(cita -> {
                 cita.setEstatus(agenda.getEstatus());
-                cita.setId_cliente(agenda.getId_cliente());
+                cita.setIdCliente(agenda.getIdCliente());
                 agendaRepository.save(cita);
             }
         );

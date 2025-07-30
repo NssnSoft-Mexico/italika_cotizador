@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +34,13 @@ public class AgendaController {
         return agendaService.obtenerAgendaByStatus(estatus);
     }
 
-    @GetMapping("/obtenerAgendaById/{id}")
-    public Agenda obtenerAgendaById(@PathVariable Long id) {
-        return agendaService.obtenerAgendaById(id);
+    @GetMapping("/obtenerAgendaById/{idCliente}")
+    public ResponseEntity<List<Agenda>> obtenerCitasPorCliente(@PathVariable("idCliente") Long idCliente) {
+        List<Agenda> citas = agendaService.obtenerAgendaById(idCliente);
+        if (citas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(citas);
     }
 
     @PostMapping("/crearAgenda")

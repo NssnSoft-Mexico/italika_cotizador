@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Login;
 import com.example.demo.model.LoginRequest;
 import com.example.demo.repository.LoginRepository;
+import com.example.demo.securityConfiguration.JwtUtil;
 import com.example.demo.service.LoginService;
 
 @RestController
@@ -24,20 +25,25 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @PostMapping("/loginUser")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         return loginRepository.findByUsername(loginRequest.getUsername())
         .map(user -> {
             if (user.getPassword().equals(loginRequest.getPassword())) {
+                String token = jwtUtil.generateToken(loginRequest.getUsername());
                 Map<String, Object> response = new HashMap<>();
                 response.put("id", user.getId());
                 response.put("direccion", user.getDireccion());
                 response.put("nombre_user", user.getNombre_user());
                 response.put("tipo", user.getTipo());
+                response.put("token", token);
                 
                 return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta"); // 401
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales invalidas"); // 401
             }
         })
         .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado")); // 404
